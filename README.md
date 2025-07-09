@@ -47,7 +47,7 @@ A full-stack Loan Management System designed to streamline and manage loan opera
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/LoanManagementSystem.git
+   git clone https://github.com/ppattewar17/Loan-management-System.git
    cd LoanManagementSystem
 
 
