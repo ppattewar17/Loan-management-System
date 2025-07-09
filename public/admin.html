@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Name - Home</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Default Light Theme */
+        :root {
+            --primary-bg: #f8f9fa;
+            --primary-text: #222;
+            --navbar-bg: white;
+            --hero-bg: #000000;
+            --button-bg-light: #F9A21D;
+            --button-bg-dark: #547698;
+            --footer-bg: #222;
+            --feature-box-bg: #547698;
+            --feature-box-text: #ffffff;
+        }
+
+        /* Dark Theme Variables  */
+        [data-theme="dark"] {
+            --primary-bg: #121212;
+            --primary-text: #e0e0e0;
+            --navbar-bg: #333;
+            --hero-bg: #1d1d1d;
+            --button-bg-light: #FF8C00;
+            --button-bg-dark: #4a6572;
+            --footer-bg: #1e1e1e;
+            --feature-box-bg: #4a6572;
+            --feature-box-text: #ffffff;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: var(--navbar-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-text);
+            font-weight: bold;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 10%;
+            background-color: var(--hero-bg);
+        }
+        .hero h1 {
+            color: white;
+            font-size: 38px;
+            font-weight: 600;
+        }
+        .hero p {
+            color: white;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .btn {
+            background: var(--button-bg-light);
+            border: none;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            color: black;
+            border-radius: 5px;
+        }
+        .btn2 {
+            background: var(--button-bg-dark);
+            border: none;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+        }
+        .features {
+            padding: 40px 10%;
+            text-align: center;
+        }
+        .feature-box {
+            background: var(--feature-box-bg);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 30%;
+        }
+        .feature-box h3, .feature-box p {
+            color: var(--feature-box-text);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--footer-bg);
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capital Assist</h2>
+        <ul class="nav-links">
+            <li><a href="admin.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="loan_applications.html">Loan Applications</a></li>
+            <li><a href="report.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+    
+    <header class="hero">
+        <h1>Welcome to Capital Assist</h1>
+        <p>Your trusted partner in loan management and financial solutions.</p>
+    </header>
+    
+    <section class="features">
+        <h2>Our Services</h2>
+        <div class="feature-box">
+            <h3>Loan Management</h3>
+            <p>Efficiently handle loan applications and approvals with our streamlined system.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Client Database</h3>
+            <p>Manage and access client details securely in a centralized platform.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Financial Reports</h3>
+            <p>Generate insightful reports to track performance and make informed decisions.</p>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>© 2024 Capital Assist. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

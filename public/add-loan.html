@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f9;
+      margin: 0;
+      padding: 30px;
+    }
+
+    #loanForm {
+      background-color: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    #loanForm div {
+      margin-bottom: 20px;
+    }
+
+    #loanForm label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    #loanForm input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    #loanForm input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    #loanForm button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #loanForm button:hover {
+      background-color: #0056b3;
+    }
+
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 30px;
+  }
+
+  #loanForm {
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  #loanForm div {
+    margin-bottom: 20px;
+  }
+
+  #loanForm label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  #loanForm input,
+  #loanForm select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+
+  #loanForm input:focus,
+  #loanForm select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  #loanForm button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #loanForm button:hover {
+    background-color: #0056b3;
+  }
+
+  </style>
+</head>
+<body>
+
+<form id="loanForm">
+  <h2 >Add New Application</h2>
+  <div>
+    <label for="fileNumber">File Number:</label>
+    <input id="fileNumber" required />
+  </div>
+
+  <div>
+    <label for="clientName">Client Name:</label>
+    <input id="clientName" required />
+  </div>
+
+  <div>
+    <label for="executive">Executive:</label>
+    <input id="executive" required />
+  </div>
+
+  <div>
+    <label for="bankRM">Bank RM:</label>
+    <input id="bankRM" required />
+  </div>
+
+  <div>
+    <label for="product">Product:</label>
+    <input id="product" required />
+  </div>
+
+  <div>
+    <label for="loanAmount">Loan Amount:</label>
+    <input id="loanAmount" type="number" required />
+  </div>
+
+  <div>
+    <label for="assetType">Asset Type:</label>
+    <input id="assetType" required />
+  </div>
+
+  <div>
+    <label for="tenor">Tenor (in months):</label>
+    <input id="tenor" type="number" placeholder="in months" required />
+  </div>
+
+  <div>
+    <label for="roi">ROI:</label>
+    <input id="roi" type="number"  required />
+  </div>
+
+  <div>
+    <label for="bankName">Bank Name:</label>
+    <select  id="bankName" required>
+      <option value="Bank">Bank</option>
+      <option>Axis Bank</option>
+      <option>Federal Bank</option>
+      <option>HDFC Bank</option>
+      <option>ICICI Bank</option>
+      <option>Kotak Bank</option>
+      <option>YES Bank</option>
+      <option>Chola Bank</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <select id="status" required>
+      <option value="Status">Status</option>
+      <option value="Approved">Approved</option>
+      <option value="Pending">Pending</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <div style="text-align: center;">
+    <button type="submit">Add Loan</button>
+  </div>
+</form>
+
+<script src="add-loan.js"></script>
+
+</body>
+</html>

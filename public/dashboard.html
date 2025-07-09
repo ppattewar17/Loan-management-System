@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="theme.js" defer></script>
+</head>
+<body class="p-6" id="body">
+
+    <!-- Dashboard Header -->
+    <h1 class="text-3xl font-bold mb-6" id="dashboard-title">Loan Management Dashboard</h1>
+
+ 
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-4 gap-4 mb-6" id="summary-cards">
+        <div class="p-4 rounded-lg shadow-md" id="total-loans">
+            <h3 class="text-lg font-semibold">Total Loans</h3>
+            <p class="text-2xl">120</p>
+        </div>
+        <div class="p-4 rounded-lg shadow-md" id="pending-approvals">
+            <h3 class="text-lg font-semibold">Pending Approvals</h3>
+            <p class="text-2xl">15</p>
+        </div>
+        <div class="p-4 rounded-lg shadow-md" id="rejected">
+            <h3 class="text-lg font-semibold">Rejected</h3>
+            <p class="text-2xl">8</p>
+        </div>
+        <div class="p-4 rounded-lg shadow-md" id="loan-amount">
+            <h3 class="text-lg font-semibold">Total Loan Amount</h3>
+            <p class="text-2xl">₹5 Crores</p>
+        </div>
+    </div>
+
+    <!-- Recent Loan Applications Table -->
+    <div class="p-6 rounded-lg shadow-md mb-6" id="recent-loans">
+        <h2 class="text-xl font-bold mb-4">Recent Loan Applications</h2>
+        <table class="w-full border-collapse border border-gray-200">
+            <thead>
+                <tr class="border p-2" id="table-header">
+                    <th class="border p-2">File No</th>
+                    <th class="border p-2">Client Name</th>
+                    <th class="border p-2">Loan Amount</th>
+                    <th class="border p-2">Status</th>
+                    <th class="border p-2">Date Applied</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border p-2">1001</td>
+                    <td class="border p-2">John Doe</td>
+                    <td class="border p-2">₹5,00,000</td>
+                    <td class="border p-2 text-green-500">Approved</td>
+                    <td class="border p-2">01-Apr-2024</td>
+                </tr>
+                <tr>
+                    <td class="border p-2">1002</td>
+                    <td class="border p-2">Jane Smith</td>
+                    <td class="border p-2">₹10,00,000</td>
+                    <td class="border p-2 text-yellow-500">Pending</td>
+                    <td class="border p-2">03-Apr-2024</td>
+                </tr>
+                <tr>
+                    <td class="border p-2">1003</td>
+                    <td class="border p-2">Mark Lee</td>
+                    <td class="border p-2">₹2,50,000</td>
+                    <td class="border p-2 text-red-500">Rejected</td>
+                    <td class="border p-2">20-Mar-2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+    <!-- Graphical Insights -->
+    <div class="p-6 rounded-lg shadow-md mb-6" id="graphical-insights">
+        <h2 class="text-xl font-bold mb-4">Loan Application Insights</h2>
+        <div class="flex flex-wrap md:flex-nowrap gap-6">
+            <!-- Loan Distribution Chart -->
+            <div class="w-full md:w-1/2 h-[350px] flex justify-center items-center">
+                <canvas id="loanChart" class="w-full h-full"></canvas>
+            </div>
+            <!-- Bankwise Distribution Chart -->
+            <h2 class="text-xl font-bold mb-4">Bankwise Distribution</h2>
+            <div class="w-full md:w-1/2 h-[350px] flex justify-center items-center">
+                <canvas id="bankChart" class="w-full h-full"></canvas>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Chart.js Script -->
+    <script>
+        const loanctx = document.getElementById('loanChart').getContext('2d');
+        new Chart(loanctx, {
+            type: 'pie',
+            data: {
+                labels: ['Approved', 'Pending', 'Rejected'],
+                datasets: [{
+                    data: [60, 25, 15],
+                    backgroundColor: ['#3498db', '#f1c40f', '#e74c3c']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        const bankctx = document.getElementById('bankChart').getContext('2d');
+        new Chart(bankctx, {
+            type: 'bar',
+            data: {
+                labels: ['Axis', 'Federal', 'HDFC', 'ICICI', 'Kotak', 'YES', 'Chola'],
+                datasets: [{
+                    data: [20, 15, 22, 13, 18, 7, 5],
+                    backgroundColor: ['#A8DADC', '#457B9D', '#E63946', '#F4A261', '#2A9D8F', '#F4D35E', '#E76F51']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

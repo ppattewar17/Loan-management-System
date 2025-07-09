@@ -1,0 +1,49 @@
+:root {
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: #111528;
+  --seconday-text: #232728;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+}
+
+.darkmode {
+  --base-color: #070b1d;
+  --base-variant: #101425;
+  --text-color: #ffffff;
+  --seconday-text: #a4a5b8;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+}
+
+body {
+  background-color: var(--base-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6,
+label {
+  color: var(--text-color);
+}
+
+input {
+  background-color: var(--base-color);
+  color: var(--text-color);
+  border: 1px solid var(--base-variant);
+}
+
+.card, .form-section {
+  background-color: var(--base-variant);
+  color: var(--text-color);
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  background-color: var(--base-color);
+  color: var(--text-color);
+}

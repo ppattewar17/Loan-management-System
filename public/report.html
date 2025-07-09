@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Reports</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+  <script src="theme.js" defer></script>
+</head>
+<body class="p-6" style="background-color: var(--base-color); color: var(--text-color);">
+  <div class="container mx-auto p-6 rounded-lg shadow-md" style="background-color: var(--base-color); color: var(--text-color);">
+    <h2 class="text-2xl font-bold mb-6 text-center">Loan Reports</h2>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
+      <select id="statusFilter" class="p-2 w-52 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Status</option>
+        <option value="Approved">Approved</option>
+        <option value="Pending">Pending</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+
+      <select id="bankFilter" class="p-2 w-52 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Bank</option>
+        <option value="AXIS_BANK">Axis Bank</option>
+        <option value="FEDERAL_BANK">Federal Bank</option>
+        <option value="HDFC_BANK">HDFC Bank</option>
+        <option value="ICICI_BANK">ICICI Bank</option>
+        <option value="KOTAK_BANK">Kotak Bank</option>
+        <option value="YES_BANK">YES Bank</option>
+        <option value="CHOLA_BANK">Chola Bank</option>
+      </select>
+
+      <button id="filterBtn" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition w-44">
+        Filter
+      </button>
+    </div>
+
+    <!-- Reports Table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-300 text-sm text-center" style="background-color: var(--base-color); color: var(--text-color);">
+        <thead>
+          <tr style="background-color: var(--secondary-color); color: var(--text-color);">
+            <th class="p-2 border">File No</th>
+            <th class="p-2 border">Client Name</th>
+            <th class="p-2 border">Contact No</th>
+            <th class="p-2 border">Executive</th>
+            <th class="p-2 border">Bank RM</th>
+            <th class="p-2 border">Product</th>
+            <th class="p-2 border">Loan Amount</th>
+            <th class="p-2 border">Asset Type</th>
+            <th class="p-2 border">Tenor</th>
+            <th class="p-2 border">ROI</th>
+            <th class="p-2 border">Bank</th>
+            <th class="p-2 border">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>

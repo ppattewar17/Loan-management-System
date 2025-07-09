@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Applications - Capital Assist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    :root {
+      --primary-bg: #f8f9fa;
+      --primary-text: #222;
+      --navbar-bg: white;
+      --button-bg-light: #F9A21D;
+      --button-bg-dark: #547698;
+      --footer-bg: #222;
+      --table-bg: #fff;
+      --table-text: #222;
+      --table-header-bg: #1E4166;
+      --table-header-text: #fff;
+    }
+
+    [data-theme="dark"] {
+      --primary-bg: #121212;
+      --primary-text: #e0e0e0;
+      --navbar-bg: #333;
+      --button-bg-light: #FF8C00;
+      --button-bg-dark: #4a6572;
+      --footer-bg: #1e1e1e;
+      --table-bg: #333;
+      --table-text: #ddd;
+      --table-header-bg: #4a6572;
+      --table-header-text: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: var(--navbar-bg);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary-text);
+      font-weight: bold;
+    }
+
+    .appl {
+      padding: 40px 10%;
+      text-align: center;
+    }
+
+    .btn {
+      background: var(--button-bg-light);
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      color: black;
+      border-radius: 5px;
+    }
+
+    .loan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: var(--table-bg);
+      color: var(--table-text);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .loan-table th, .loan-table td {
+      padding: 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .loan-table th {
+      background-color: var(--table-header-bg);
+      color: var(--table-header-text);
+    }
+
+    .actions button {
+      padding: 6px 12px;
+      border: none;
+      cursor: pointer;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+
+    .edit-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .delete-btn {
+      background: #dc3545;
+      color: white;
+    }
+
+    .add-btn {
+      background: var(--button-bg-dark);
+      color: white;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--footer-bg);
+      color: white;
+      margin-top: 40px;
+    }
+
+    .modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow-y: auto; 
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px; 
+  max-height: 90vh;
+  padding: 20px;
+  overflow-y: auto; 
+}
+
+
+
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .submit-btn {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+.actions .action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-btn {
+  background-color: #00bcd4;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+  transition: all 0.3s ease;
+}
+.edit-btn:hover {
+  background-color: #0097a7;
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.6);
+}
+
+.delete-btn {
+  background-color: #e91e63;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+  transition: all 0.3s ease;
+}
+.delete-btn:hover {
+  background-color: #c2185b;
+  box-shadow: 0 6px 15px rgba(233, 30, 99, 0.6);
+}
+
+
+
+
+  </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <h2>Capital Assist</h2>
+      <ul class="nav-links">
+        <li><a href="admin.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="loan_applications.html">Loan Applications</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Loan Applications Section -->
+    <section class="appl">
+      <h2>Loan Applications</h2>
+      <a href="add-loan.html"><button class="add-btn">+ Add New Loan</button></a>
+  
+      <table class="loan-table">
+        <thead>
+          <tr>
+            <th>File Number</th>
+            <th>Client Name</th>
+            <th>Executive</th>
+            <th>Bank RM</th>
+            <th>Product</th>
+            <th>Loan Amount</th>
+            <th>Asset Type</th>
+            <th>Tenor</th>
+            <th>ROI</th>
+            <th>Bank Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows populated by JavaScript -->
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2024 Capital Assist. Internal Use Only.</p>
+    </footer>
+  
+    <!-- Edit Loan Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Edit Loan</h3>
+        <form id="editForm">
+          <input type="hidden" id="edit-id" />
+  
+          <div class="form-group">
+            <label for="edit-fileNumber">File Number:</label>
+            <input type="number" id="edit-fileNumber" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-clientName">Client Name:</label>
+            <input type="text" id="edit-clientName" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-executive">Executive:</label>
+            <input type="text" id="edit-executive" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-bankRM">Bank RM:</label>
+            <input type="text" id="edit-bankRM" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-product">Product:</label>
+            <input type="text" id="edit-product" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-loanAmount">Loan Amount:</label>
+            <input type="number" id="edit-loanAmount" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-assetType">Asset Type:</label>
+            <input type="text" id="edit-assetType" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-tenor">Tenor:</label>
+            <input type="number" id="edit-tenor" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-roi">ROI:</label>
+            <input type="number" id="edit-roi" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-bankName">Bank Name:</label>
+            <select id="edit-bankName" required>
+              <option>Axis Bank</option>
+              <option>Federal Bank</option>
+              <option>HDFC Bank</option>
+              <option>ICICI Bank</option>
+              <option>Kotak Bank</option>
+              <option>YES Bank</option>
+              <option>Chola Bank</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="edit-status">Status:</label>
+            <select id="edit-status" required>
+              <option value="Approved">Approved</option>
+              <option value="Pending">Pending</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="submit-btn">Update</button>
+          <button type="button" class="btn" onclick="closeModal()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  
+    <script src="theme.js" defer></script>
+    <script src="loan-application.js" defer></script>
+  </body>
+  </html>

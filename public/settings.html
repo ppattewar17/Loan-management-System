@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Loan Management System</title>
+  <link rel="stylesheet" href="settings.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 p-4 shadow-md" style="background-color: var(--base-color);">
+      <h2 class="text-2xl font-bold" style="color: var(--text-color);">Settings</h2>
+
+      <nav class="mt-6">
+        <a href="#profile" class="block py-2 px-4 rounded" style="background-color: var(--base-variant); color: var(--text-color);">Profile</a>
+        <a href="#security" class="block py-2 px-4 rounded mt-2 hover:opacity-80" style="background-color: var(--base-variant); color: var(--text-color);">Security</a>
+        <a href="#theme" class="block py-2 px-4 rounded mt-2 hover:opacity-80" style="background-color: var(--base-variant); color: var(--text-color);">Theme</a>
+        <button id="homeBtn" class="mt-4 px-4 py-2 rounded hover:opacity-80" style="background-color: var(--primary-color); color: white;">Go back to Home Page</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6" style="background-color: var(--base-color); color: var(--text-color);">
+      <h1 class="text-3xl font-semibold">Profile Settings</h1>
+
+      <!-- Profile -->
+      <div id="profile" class="p-6 rounded-lg shadow-md mt-4" style="background-color: var(--base-variant);">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe" class="input-field"/>
+
+        <label class="mt-4 block">Email</label>
+        <input type="email" placeholder="johndoe@email.com" class="input-field"/>
+
+        
+
+        <button class="mt-4 px-4 py-2 rounded hover:opacity-80" style="background-color: var(--accent-color); color: white;">Save Changes</button>
+      </div>
+
+     <!-- Security -->
+<h2 id="security" class="text-2xl font-semibold mt-6">Security</h2>
+<div class="p-6 rounded-lg shadow-md mt-4" style="background-color: var(--base-variant);">
+    <label>Change Password</label>
+    <input id="newPassword" type="password" placeholder="New Password" class="input-field" />
+    <button id="updatePasswordBtn" class="mt-4 px-4 py-2 rounded hover:opacity-80" style="background-color: crimson; color: white;">Update Password</button>
+</div>
+
+
+      <!-- Theme -->
+      <h2 id="theme" class="text-2xl font-semibold mt-6">Theme</h2>
+      <div class="p-6 rounded-lg shadow-md mt-4" style="background-color: var(--base-variant);">
+        <label class="flex items-center">
+          <input type="radio" name="theme" value="light" class="mr-2"> Light Mode
+        </label>
+        <label class="flex items-center mt-2">
+          <input type="radio" name="theme" value="dark" class="mr-2"> Dark Mode
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <script src="settings.js" defer></script>
+</body>
+</html>

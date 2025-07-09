@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Loan - Capital Assist</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Edit Loan Application</h2>
+  <form id="editForm">
+    <input type="hidden" id="id" />
+    <input type="text" id="fileNumber" placeholder="File Number" required />
+    <input type="text" id="clientName" placeholder="Client Name" required />
+    <input type="text" id="executive" placeholder="Executive" required />
+    <input type="text" id="bankRM" placeholder="Bank RM" required />
+    <input type="text" id="product" placeholder="Product" required />
+    <input type="number" id="loanAmount" placeholder="Loan Amount" required />
+    <input type="text" id="assetType" placeholder="Asset Type" required />
+    <input type="number" id="tenor" placeholder="Tenor (months)" required />
+    <input type="number" id="roi" step="0.01" placeholder="Rate of Interest (%)" required />
+    <input type="text" id="bankName" placeholder="Bank Name" required />
+    <select id="status">
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+    <button type="submit">Update</button>
+  </form>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const loanId = urlParams.get("id");
+    const bank = urlParams.get("bank");
+
+    if (!loanId || !bank) {
+      alert(" Missing loan ID or bank info in URL.");
+      window.location.href = "loan_applications.html";
+    }
+
+    const API_URL = `http://localhost:5000/api/loans/${loanId}?bank=${bank}`;
+
+    const form = document.getElementById("editForm");
+
+    const fields = [
+      "id", "fileNumber", "clientName", "executive", "bankRM",
+      "product", "loanAmount", "assetType", "tenor", "roi",
+      "bankName", "status"
+    ];
+
+    async function loadLoan() {
+      try {
+        const res = await fetch(API_URL);
+        const loan = await res.json();
+
+        fields.forEach(f => {
+          const el = document.getElementById(f);
+          if (el && loan[f] !== undefined) el.value = loan[f];
+        });
+      } catch (err) {
+        console.error(" Failed to fetch loan:", err);
+        alert("Failed to load loan data.");
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const updated = {};
+      fields.forEach(f => {
+        const el = document.getElementById(f);
+        if (el) {
+          updated[f] = el.type === "number" || el.type === "range" ? parseFloat(el.value) : el.value;
+        }
+      });
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updated),
+        });
+
+        const data = await res.json();
+        alert(data.message || "Loan updated successfully");
+        window.location.href = `loan_applications.html?bank=${bank}`;
+      } catch (err) {
+        console.error("Update error:", err);
+        alert("Update failed.");
+      }
+    });
+
+    loadLoan();
+  </script>
+</body>
+</html>
